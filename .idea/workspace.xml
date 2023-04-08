@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd422251-da84-4230-aef0-d6e55c548099" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_management_system/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_management_system/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_management_system/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_management_system/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_management_system/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_management_system/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_management_system/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" />
-    </list>
+    <list default="true" id="fd422251-da84-4230-aef0-d6e55c548099" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,7 +77,7 @@
       <workItem from="1680871261426" duration="7632000" />
       <workItem from="1680973227096" duration="276000" />
       <workItem from="1680973507619" duration="3770000" />
-      <workItem from="1680977470625" duration="514000" />
+      <workItem from="1680977470625" duration="822000" />
     </task>
     <servers />
   </component>
