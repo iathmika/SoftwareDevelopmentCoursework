@@ -1,25 +1,11 @@
-from django.db import models
-
-# Create your models here.
-from pymongo import MongoClient
-from django.db import models
 import datetime
+from dao.database import MongoDBClient
 
 
 class Game:
     _instance = None
-    _client = MongoClient(
-        "mongodb+srv://sdowner:123456sd@cluster0.cqxqh2d.mongodb.net/?retryWrites=true&w=majority")
 
-    dblist = _client.list_database_names()
-    if "GCM" in dblist:
-        print("The database exists.")
-    else:
-        print("Database will be created")
-
-    _db = _client["GCM"]
-
-    _collection = _db["game"]
+    _collection = MongoDBClient.getDatabase()["game"]
 
     @classmethod
     def getInstance(cls):

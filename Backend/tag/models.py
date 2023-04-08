@@ -1,14 +1,12 @@
 # Create your models here.
 from pymongo import MongoClient
 
+from Backend.dao.database import MongoDBClient
+
 
 class Tag:
     _instance = None
-    _client = MongoClient(
-        "mongodb+srv://sdowner:123456sd@cluster0.cqxqh2d.mongodb.net/?retryWrites=true&w=majority")
-
-    _db = _client["GCM"]
-    collection = _db["tag"]
+    _collection = MongoDBClient.getDatabase()["tag"]
 
     @classmethod
     def getInstance(cls):

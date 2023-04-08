@@ -1,15 +1,12 @@
 # Create your models here.
 from pymongo import MongoClient
 
+from Backend.dao.database import MongoDBClient
+
 
 class Club:
     _instance = None
-    _client = MongoClient(
-        "mongodb+srv://sdowner:123456sd@cluster0.cqxqh2d.mongodb.net/?retryWrites=true&w=majority")
-
-    dblist = _client.list_database_names()
-    _db = _client["GCM"]
-    collection = _db["club"]
+    _collection = MongoDBClient.getDatabase()["club"]
 
     @classmethod
     def getInstance(cls):
@@ -18,5 +15,5 @@ class Club:
         return cls._instance
 
     def get_club_by_id(self, club_id):
-        return self.collection.find_one({"id": club_id})
+        return self._collection.find_one({"id": club_id})
 
