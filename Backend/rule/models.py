@@ -1,7 +1,7 @@
 # Create your models here.
 from pymongo import MongoClient
 
-from Backend.dao.database import MongoDBClient
+from dao.database import MongoDBClient
 
 
 class Rule:
@@ -15,4 +15,7 @@ class Rule:
         return cls._instance
 
     def get_rule_by_id(self, rule_id):
-        return self._collection.find_one({"id": rule_id})
+        rule_found = self._collection.find_one({"id": int(rule_id)})
+        if rule_found:
+            rule_found['_id'] = str(rule_found['_id'])
+        return rule_found
