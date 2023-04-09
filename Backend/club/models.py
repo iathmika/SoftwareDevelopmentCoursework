@@ -13,9 +13,24 @@ class Club:
             cls._instance = Club()
         return cls._instance
 
-    def get_club_by_id(self, club_id):
-        club_found = self._collection.find_one({"id": int(club_id)})
-        if club_found:
-            club_found['_id'] = strclub_found['_id'])
-        return club_found
+    def get_all(self):
+        obj_list = list(self._collection.find({}))
+        if obj_list:
+            for obj in obj_list:
+                obj['_id'] = str(obj['_id'])
+        return obj_list
 
+    def get_by_id(self, _id):
+        obj_found = self._collection.find_one({'id': int(_id)})
+        if obj_found:
+            obj_found['_id'] = str(obj_found['_id'])
+        return obj_found
+
+    def insert_one(self, data):
+        self._collection.insert_one(data)
+
+    def update_by_id(self, _id, data):
+        self._collection.update_one({'id': int(_id)}, {'$set': data})
+
+    def delete_by_id(self, _id):
+        self._collection.delete_one({'id': int(_id)})

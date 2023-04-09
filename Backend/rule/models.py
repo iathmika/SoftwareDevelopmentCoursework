@@ -1,5 +1,4 @@
 # Create your models here.
-from pymongo import MongoClient
 
 from dao.database import MongoDBClient
 
@@ -14,8 +13,24 @@ class Rule:
             cls._instance = Rule()
         return cls._instance
 
-    def get_rule_by_id(self, rule_id):
-        rule_found = self._collection.find_one({"id": int(rule_id)})
-        if rule_found:
-            rule_found['_id'] = str(rule_found['_id'])
-        return rule_found
+    def get_all(self):
+        obj_list = list(self._collection.find({}))
+        if obj_list:
+            for obj in obj_list:
+                obj['_id'] = str(obj['_id'])
+        return obj_list
+
+    def get_by_id(self, _id):
+        obj_found = self._collection.find_one({'id': int(_id)})
+        if obj_found:
+            obj_found['_id'] = str(obj_found['_id'])
+        return obj_found
+
+    def insert_one(self, data):
+        self._collection.insert_one(data)
+
+    def update_by_id(self, _id, data):
+        self._collection.update_one({'id': int(_id)}, {'$set': data})
+
+    def delete_by_id(self, _id):
+        self._collection.delete_one({'id': int(_id)})

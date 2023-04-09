@@ -1,5 +1,4 @@
 # Create your models here.
-from pymongo import MongoClient
 
 from dao.database import MongoDBClient
 
@@ -14,8 +13,24 @@ class Tag:
             cls._instance = Tag()
         return cls._instance
 
-    def get_tag_by_id(self, tag_id):
-        tag_found = self._collection.find_one({'id': int(tag_id)})
-        if tag_found:
-            tag_found['_id'] = str(tag_found['_id'])
-        return tag_found
+    def get_all(self):
+        obj_list = list(self._collection.find({}))
+        if obj_list:
+            for obj in obj_list:
+                obj['_id'] = str(obj['_id'])
+        return obj_list
+
+    def get_by_id(self, _id):
+        obj_found = self._collection.find_one({'id': int(_id)})
+        if obj_found:
+            obj_found['_id'] = str(obj_found['_id'])
+        return obj_found
+
+    def insert_one(self, data):
+        self._collection.insert_one(data)
+
+    def update_by_id(self, _id, data):
+        self._collection.update_one({'id': int(_id)}, {'$set': data})
+
+    def delete_by_id(self, _id):
+        self._collection.delete_one({'id': int(_id)})

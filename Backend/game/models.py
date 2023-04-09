@@ -7,33 +7,33 @@ class Game:
 
     _collection = MongoDBClient.getDatabase()["game"]
 
+    def get_all(self):
+        obj_list = list(self._collection.find({}))
+        if obj_list:
+            for obj in obj_list:
+                obj['_id'] = str(obj['_id'])
+        return obj_list
+
+    def get_by_id(self, _id):
+        obj_found = self._collection.find_one({'id': int(_id)})
+        if obj_found:
+            obj_found['_id'] = str(obj_found['_id'])
+        return obj_found
+
+    def insert_one(self, data):
+        self._collection.insert_one(data)
+
+    def update_by_id(self, _id, data):
+        self._collection.update_one({'id': int(_id)}, {'$set': data})
+
+    def delete_by_id(self, _id):
+        self._collection.delete_one({'id': int(_id)})
+
     @classmethod
     def getInstance(cls):
         if cls._instance is None:
             cls._instance = Game()
         return cls._instance
-
-    def get_all_games(self):
-        game_list = list(self._collection.find({}))
-        if game_list:
-            for g in game_list:
-                g['_id'] = str(g['_id'])
-        return game_list
-
-    def get_game_by_id(self, game_id):
-        game_found = self._collection.find_one({'id': int(game_id)})
-        if game_found:
-            game_found['_id'] = str(game_found['_id'])
-        return game_found
-
-    def insert_one_game(self, data):
-        self._collection.insert_one(data)
-
-    def update_game_by_id(self, game_id, data):
-        self._collection.update_one({'id': int(game_id)}, {'$set': data})
-
-    def delete_game_by_id(self, game_id):
-        self._collection.delete_one({'id': int(game_id)})
 
     def get_game_fields(self, game_id):
         game_found = self._collection.find_one({"id": int(game_id)})

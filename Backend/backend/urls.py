@@ -20,5 +20,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('game/', include('game.urls')),
     path('user/', include('user.urls')),
-
+    path('review/', include('review.urls')),
+    path('rule/', include('rule.urls')),
+    path('seller/', include('seller.urls')),
+    path('tag/', include('tag.urls')),
+    path('club/', include('club.urls'))
 ]
