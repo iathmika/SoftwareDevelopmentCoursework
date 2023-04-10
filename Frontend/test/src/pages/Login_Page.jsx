@@ -13,13 +13,16 @@ import BasicButton from "../components/basicButton/basicButton";
 
 const LoginPage = () => {
   const [signUp, setSignUp] = React.useState(false);
+  const handleLoginButton = () => {
+    setSignUp(!signUp);
+  }
 
   if(!signUp){
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "12px"}}>
         <SearchBar placeHolder={"Name"} />
         <SearchBar placeHolder={"Password"} />
-        <BasicButton svg="svg/login.svg"/>
+        <BasicButton svg="svg/login.svg" handleButtonClick={handleLoginButton}/>
       </div>
     );
   }
@@ -27,7 +30,6 @@ const LoginPage = () => {
     return (
       <div style={{ padding: 30 }}>
         <Typography variant="h3" component="h3" align="center"> Sign Up </Typography>
-      
           <Grid
             container
             spacing={3}

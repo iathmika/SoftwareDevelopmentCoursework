@@ -27,18 +27,20 @@ const Home = () => {
 
   return(
     <div className={"home"}>
-      <div className={"navigator"}>
+      <div className={"navigator-container"}>
         <Navigator />
       </div>
-      <div className="title-container">
-        <div className="title">Collection</div>
-        <div className={"data-filter-container"}>
-          <SearchBar placeHolder="Enter the Name" searchTextChange={searchTextChange}/>
-          <TypeFilter typeChange={typeSelectionChange}/>
+      <div className={"collections"}>
+        <div className="title-container">
+          <div className="title">Collection</div>
+          <div className={"data-filter-container"}>
+            <SearchBar placeHolder="Enter the Name" searchTextChange={searchTextChange}/>
+            <TypeFilter typeChange={typeSelectionChange}/>
+          </div>
         </div>
-      </div>
-      <div className={"game-card-set-container"}>
-        <GameCardSet data={games} />
+        <div className={"game-card-set-container"}>
+          <GameCardSet data={games} />
+        </div>
       </div>
     </div>
   )
