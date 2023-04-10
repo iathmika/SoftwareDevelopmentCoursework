@@ -58,3 +58,15 @@ def review_all(request):
             return JsonResponse(_list, safe=False, status=200)
         else:
             return JsonResponse({'message': 'Not Exists'}, status=404)
+
+
+def review_by_user_game(request):
+    _model = Review.getInstance()
+    if request.method == 'GET':
+        uid = request.GET.get('uid')
+        gid = request.GET.get('gid')
+        _found = _model.get_by_user_game(uid, gid)
+        if _found:
+            return JsonResponse(_found)
+        else:
+            return JsonResponse({'message': 'Not found'}, status=404)

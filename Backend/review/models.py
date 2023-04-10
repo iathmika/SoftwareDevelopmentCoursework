@@ -28,6 +28,13 @@ class Review:
             obj_found['_id'] = str(obj_found['_id'])
         return obj_found
 
+    def get_by_user_game(self, uid, gid):
+        obj_found = self._collection.find_one({'owner_id': uid,
+                                               'game_id': gid})
+        if obj_found:
+            obj_found['_id'] = str(obj_found['_id'])
+        return obj_found
+
     def insert_one(self, data):
         return self._collection.insert_one(data)
 
