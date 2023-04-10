@@ -1,0 +1,77 @@
+.game-card {
+    width: 330px;
+    height: 120px;
+    background-color: rgba(134, 134, 134, 0.09);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-card-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+.delete-button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.delete-button:hover svg {
+    fill: #ff0000;
+}
+
+.delete-button svg {
+    fill: #000;
+    width: 100%;
+    height: 100%;
+}
+
+.game-rating {
+    color: white;
+}
+
+.game-name {
+    color: #FFFFFF;
+    margin: 0px;
+    font-size: 20px;
+}
+
+.game-rating {
+    color: #FFFFFF;
+    margin: 0px;
+    font-size: 18px;
+}
+
+.game-delete {
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}

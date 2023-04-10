@@ -1,0 +1,13 @@
+.Button {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+}
+
+.svg-button {
+    width: 30px;
+}
