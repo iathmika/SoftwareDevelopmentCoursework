@@ -2,6 +2,7 @@ from bson import ObjectId
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+import re
 
 from review.models import Review
 from rule.models import Rule
@@ -89,11 +90,13 @@ def game_info(request):
         for _idx in _found['review']:
             review_list.append(Review.getInstance().get_by_id(ObjectId(_idx)))
 
-        rating_sum = 0.0
-        for review in review_list:
-            rating_sum += float(review.get('rating'))
+        rating = 0
+        if len(review_list) is not 0:
+            rating_sum = 0.0
+            for review in review_list:
+                rating_sum += float(review.get('rating'))
 
-        rating = rating_sum / len(review_list)
+            rating = rating_sum / len(review_list)
 
         # get rule
         rule_list = []
@@ -111,10 +114,18 @@ def game_info(request):
             seller_list.append(Seller.getInstance().get_by_id(ObjectId(_idx)))
 
         return JsonResponse({
-                'rating': rating,
-                'reviews': review_list,
-                'sellers': seller_list,
-                'tags': tag_list,
-                'rules': rule_list,
-            }, safe=False, status=200)
+            'rating': rating,
+            'reviews': review_list,
+            'sellers': seller_list,
+            'tags': tag_list,
+            'rules': rule_list,
+        }, safe=False, status=200)
 
+
+def search_by_name(request):
+    if request.method == 'GET':
+        game_model = Game.getInstance()
+        _name = request.GET.get('name')
+        results = game_model.get_by_name_regex(_name)
+
+        return JsonResponse(results, safe=False)

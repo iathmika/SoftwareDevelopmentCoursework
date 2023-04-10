@@ -1,4 +1,5 @@
 import datetime
+import re
 
 from bson import ObjectId
 
@@ -23,6 +24,15 @@ class Game:
         if obj_found:
             obj_found['_id'] = str(obj_found['_id'])
         return obj_found
+
+    def get_by_name_regex(self, _name):
+        regex = re.compile(_name, re.IGNORECASE)
+        query = {"name": {"$regex": regex}}
+        obj_list = list(self._collection.find(query))
+        if obj_list:
+            for obj in obj_list:
+                obj['_id'] = str(obj['_id'])
+        return obj_list
 
     def insert_one(self, data):
         return self._collection.insert_one(data)

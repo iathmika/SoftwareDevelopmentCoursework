@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'game',
     'user',
-    'review'
+    'review',
+    'recommend'
 ]
 
 MIDDLEWARE = [

@@ -24,5 +24,6 @@ urlpatterns = [
     path('rule/', include('rule.urls')),
     path('seller/', include('seller.urls')),
     path('tag/', include('tag.urls')),
-    path('club/', include('club.urls'))
+    path('club/', include('club.urls')),
+    path('recommend/', include('recommend.urls')),
 ]
