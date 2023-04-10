@@ -27,7 +27,7 @@ const Home = () => {
 
   return(
     <div className={"home"}>
-      <div>
+      <div className={"navigator"}>
         <Navigator />
       </div>
       <div className="title-container">
