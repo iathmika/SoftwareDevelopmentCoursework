@@ -1,4 +1,5 @@
 # Create your models here.
+from bson import ObjectId
 
 from dao.database import MongoDBClient
 
@@ -21,7 +22,8 @@ class Club:
         return obj_list
 
     def get_by_id(self, _id):
-        obj_found = self._collection.find_one({'id': int(_id)})
+        obj_id = ObjectId(_id)
+        obj_found = self._collection.find_one({'_id': obj_id})
         if obj_found:
             obj_found['_id'] = str(obj_found['_id'])
         return obj_found
@@ -30,7 +32,9 @@ class Club:
         self._collection.insert_one(data)
 
     def update_by_id(self, _id, data):
-        self._collection.update_one({'id': int(_id)}, {'$set': data})
+        obj_id = ObjectId(_id)
+        self._collection.update_one({'_id': obj_id}, {'$set': data})
 
     def delete_by_id(self, _id):
-        self._collection.delete_one({'id': int(_id)})
+        obj_id = ObjectId(_id)
+        self._collection.delete_one({'_id': obj_id})

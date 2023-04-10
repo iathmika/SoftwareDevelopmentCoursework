@@ -20,12 +20,14 @@ def seller(request):
 
     elif request.method == 'POST':
         data = json.loads(request.body)
-        _id = data.get('id')
-        if _model.get_by_id(_id):
-            return JsonResponse({'message': 'This ID already exists'}, status=400)
+        result = _model.insert_one(data)
+        if result.acknowledged:
+            return JsonResponse({
+                '_id': str(result.inserted_id),
+                'message': 'Created successfully'
+            }, status=201)
         else:
-            _model.insert_one(data)
-            return JsonResponse({'message': 'Created successfully'}, status=201)
+            return JsonResponse({'message': 'Fail to create'}, status=500)
 
     elif request.method == 'PUT':
         _id = request.GET.get('id')

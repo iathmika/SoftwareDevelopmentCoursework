@@ -20,12 +20,14 @@ def rule(request):
 
     elif request.method == 'POST':
         data = json.loads(request.body)
-        _id = data.get('id')
-        if _model.get_by_id(_id):
-            return JsonResponse({'message': 'This ID already exists'}, status=400)
+        result = _model.insert_one(data)
+        if result.acknowledged:
+            return JsonResponse({
+                '_id': str(result.inserted_id),
+                'message': 'Created successfully'
+            }, status=201)
         else:
-            _model.insert_one(data)
-            return JsonResponse({'message': 'Created successfully'}, status=201)
+            return JsonResponse({'message': 'Fail to create'}, status=500)
 
     elif request.method == 'PUT':
         _id = request.GET.get('id')
@@ -42,7 +44,17 @@ def rule(request):
         _found = _model.get_by_id(_id)
         if _found:
             _model.delete_by_id(_id)
-            return JsonResponse({'message': 'Deleted successfully'})
+            return JsonResponse({'message': 'Deleted successfully'}, status=200)
         else:
             return JsonResponse({'message': 'Not found'}, status=404)
 
+
+def rule_all(request):
+    _model = Rule.getInstance()
+
+    if request.method == 'GET':
+        _list = _model.get_all()
+        if _list:
+            return JsonResponse(_list, safe=False, status=200)
+        else:
+            return JsonResponse({'message': 'Not Exists'}, status=404)

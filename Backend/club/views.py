@@ -20,12 +20,8 @@ def club(request):
 
     elif request.method == 'POST':
         data = json.loads(request.body)
-        _id = data.get('id')
-        if _model.get_by_id(_id):
-            return JsonResponse({'message': 'This ID already exists'}, status=400)
-        else:
-            _model.insert_one(data)
-            return JsonResponse({'message': 'Created successfully'}, status=201)
+        _model.insert_one(data)
+        return JsonResponse({'message': 'Created successfully'}, status=201)
 
     elif request.method == 'PUT':
         _id = request.GET.get('id')
