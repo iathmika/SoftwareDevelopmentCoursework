@@ -13,9 +13,13 @@ class User:
         return cls._instance
 
     def get_user_profile(self, user_id):
-        user_details = self._collection.find_one({'id': int(user_id)})
-        if user_details:
-            user_details['_id'] = str(user_details['_id'])
+        if user_id:
+            user_details = self._collection.find_one({'id': int(user_id)})
+            print("user_details: ",user_details)
+            if user_details:
+                user_details['_id'] = str(user_details['_id'])
+        else:
+            user_details = {}
         return user_details
     
     def authenticate_user(self,request,user_id,password):
@@ -32,16 +36,14 @@ class User:
         self._collection.delete_one({'id': user_id})
     
     def create_user(self,user_data):
-        if self._collection.find(user_data):
-            print("User exists!")
-        else:
-            self._collection.insert_one(user_data)
+        print("creating user with user data ",user_data)
+        return self._collection.insert_one(user_data)
 
 if __name__ == "__main__":
 
     user = User.getInstance()
-    new_user = {"id": 101, "username": "athmika", "password": "secret"}
-    user._collection.insert_one(new_user)
-    print(user.get_user_profile(101))
+    new_user = {"id": 102, "username": "athmika", "password": "secret"}
+    user.create_user(new_user)
+    print(user.get_user_profile(102))
 
     
