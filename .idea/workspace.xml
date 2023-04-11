@@ -7,10 +7,9 @@
     <list default="true" id="fd422251-da84-4230-aef0-d6e55c548099" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/game/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/game/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/user/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/user/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/user/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/user/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/recommend/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/recommend/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/review/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/review/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/review/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/review/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/user/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/user/views.py" afterDir="false" />
     </list>
@@ -99,7 +98,7 @@
       <workItem from="1680988476033" duration="33745000" />
       <workItem from="1681139873894" duration="12000" />
       <workItem from="1681139895377" duration="11729000" />
-      <workItem from="1681208171742" duration="12425000" />
+      <workItem from="1681208171742" duration="13645000" />
     </task>
     <servers />
   </component>

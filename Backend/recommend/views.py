@@ -10,7 +10,7 @@ def user_recommend(request):
     if request.method == 'GET':
         # _model = User.getInstance()
         #
-        # _id = request.GET.get('id')
+        # _id = request.session.get('id')
         # _found = _model.get_by_id(_id)
         #
         # if not _found:

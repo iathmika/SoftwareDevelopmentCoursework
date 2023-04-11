@@ -60,11 +60,13 @@ def account(request):
         # Create the new user
         if request.body:
             games_list = []
+            tag_list = []
             userdata = {"id": int(user_id),
                         "username": username,
                         "password": password,
                         "email": email,
-                        "games": games_list}
+                        "games": games_list,
+                        "tags": tag_list}
             user.create_user(userdata)
 
         return JsonResponse({'message': 'account create success'}, safe=False, status=200)
@@ -121,4 +123,27 @@ def get_user_collection(request):
         return JsonResponse({
             'id': user_id,
             'games': game_list,
+        }, safe=False, status=200)
+
+
+def get_tags(request):
+    if request.method == 'GET':
+        _model = User.getInstance()
+        user_id = request.session.get('id')
+        if not user_id:
+            return JsonResponse({'message': 'please login first'}, safe=False, status=401)
+
+        _found = _model.get_user_profile(user_id)
+        if not _found:
+            return JsonResponse({'message': 'User not found'}, status=404)
+
+        # get review and rating
+        game_model = Game.getInstance()
+        tag_list = []
+        for _idx in _found['tags']:
+            tag_list.append(game_model.get_by_id(ObjectId(_idx)))
+
+        return JsonResponse({
+            'id': user_id,
+            'games': tag_list,
         }, safe=False, status=200)

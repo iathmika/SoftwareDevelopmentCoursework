@@ -29,7 +29,7 @@ class Review:
         return obj_found
 
     def get_by_user_game(self, uid, gid):
-        obj_found = self._collection.find_one({'owner_id': uid,
+        obj_found = self._collection.find_one({'owner_id': int(uid),
                                                'game_id': gid})
         if obj_found:
             obj_found['_id'] = str(obj_found['_id'])

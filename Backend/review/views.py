@@ -20,6 +20,12 @@ def review(request):
 
     elif request.method == 'POST':
         data = json.loads(request.body)
+
+        user_id = request.session.get('id')
+        if not user_id:
+            return JsonResponse({'message': 'please login first'}, safe=False, status=401)
+
+        data['owner_id'] = user_id
         result = _model.insert_one(data)
         if result.acknowledged:
             return JsonResponse({
@@ -63,7 +69,9 @@ def review_all(request):
 def review_by_user_game(request):
     _model = Review.getInstance()
     if request.method == 'GET':
-        uid = request.GET.get('uid')
+        uid = request.session.get('id')
+        if not uid:
+            return JsonResponse({'message': 'please login first'}, safe=False, status=401)
         gid = request.GET.get('gid')
         _found = _model.get_by_user_game(uid, gid)
         if _found:
