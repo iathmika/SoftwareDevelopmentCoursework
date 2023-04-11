@@ -6,7 +6,7 @@
 <body>
 	<h1>Profile</h1>
 	<p>User ID: {{ user_profile.id }}</p>
-	<p>Name: {{ user_profile.name }}</p>
+	<p>Name: {{ user_profile.username }}</p>
 	<p>Email: {{ user_profile.email }}</p>
     <p> Games: {{ user_profile.games }} </p>
     <a href="{% url 'logout' %}">Logout</a>

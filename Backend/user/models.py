@@ -19,6 +19,9 @@ class User:
             user_details['_id'] = str(user_details['_id'])
         return user_details
 
+    def update_user_profile(self, user_id, data):
+        self._collection.update_one({'id': user_id}, {'$set': data})
+
     def authenticate_user(self, request, user_id, password):
         user_found = self._collection.find_one({'id': int(user_id), "password": password})
         if user_found:

@@ -76,6 +76,7 @@ def game(request):
             return JsonResponse({'message': 'Game not found'}, status=404)
 
 
+@csrf_exempt
 def game_all(request):
     game_model = Game.getInstance()
 
@@ -86,7 +87,7 @@ def game_all(request):
         else:
             return JsonResponse({'message': 'No Game Exists'}, status=404)
 
-
+@csrf_exempt
 def game_info(request):
     _model = Game.getInstance()
     if request.method == 'GET':
@@ -123,7 +124,7 @@ def game_info(request):
             'rules': rule_list,
         }, safe=False, status=200)
 
-
+@csrf_exempt
 def search_by_name(request):
     if request.method == 'GET':
         game_model = Game.getInstance()
