@@ -4,6 +4,7 @@ import GameDetails from "../gameDetails";
 import Button from "@mui/material/Button";
 import styles from "./GameCard.css"
 import {NavLink} from "react-router-dom";
+import AddGameDialog from "../newGameDialog";
 
 const GameCard = ({gameName, rating, backgroundImage, onButtonClick}) => {
     const [openGame, setOpenGame] = useState(false);

@@ -4,7 +4,7 @@ import Home from "../pages/Home/index"
 import Store from "../pages/Store/index"
 import Community from "../pages/Community";
 import styles from "./style.css"
-import LoginPage from "../pages/Login_Page";
+import LoginPage from "../pages/Login/Login_Page";
 import Rules from "../components/Rule/rule";
 import Review from "../components/Review/Review";
 

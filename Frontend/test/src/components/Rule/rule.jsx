@@ -29,6 +29,7 @@ const Rules = () => {
 
   useEffect(() => {
     // Actually, we should fetch data from backend.
+    console.log("fetch data from backend");
     setOfficialRules(myOfficialRules);
     setUserRules(myUserRules);
     setGameName(myGameName);

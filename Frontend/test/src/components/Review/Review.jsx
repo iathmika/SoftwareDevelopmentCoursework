@@ -4,7 +4,6 @@ import ReviewBoard from "../reviewBoard/ReviewBoard";
 import style from "./style.css";
 import Rating from '@mui/material/Rating';
 
-const myOfficialRules = "1. No cheating, hacking, or using exploits in any form.\n2. Respect other players and refrain from any kind of harassment, hate speech, or discriminatory behavior.\n3. No intentionally causing lag or disruption to the game."
 const unofficialRules_1 = "1. No cheating, hacking, or using exploits in any form.\n2. Respect other players and refrain from any kind of harassment, hate speech, or discriminatory behavior.\n3. No intentionally causing lag or disruption to the game."
 const unofficialRules_2 = "1. No cheating, hacking, or using exploits in any form.\n2. Respect other players and refrain from any kind of harassment, hate speech, or discriminatory behavior.\n3. No intentionally causing lag or disruption to the game."
 const unofficialRules_3 = "1. No cheating, hacking, or using exploits in any form.\n2. Respect other players and refrain from any kind of harassment, hate speech, or discriminatory behavior.\n3. No intentionally causing lag or disruption to the game."
@@ -33,13 +32,13 @@ const GameInfo = ({name, rating }) => {
 
 const Review = () => {
   const [newReview, setNewReview] = useState("");
-  const [officialRules, setOfficialRules] = useState("");
   const [userReview, setUserReview] = useState([]);
   const [gameName, setGameName] = useState("");
   const [gameRating, setGameRating] = useState("");
 
   useEffect(() => {
     // Actually, we should fetch data from backend.
+    console.log("fetch data from backend");
     setUserReview(myReview);
     setGameName(myGameName);
     setGameRating(myGameRating);
