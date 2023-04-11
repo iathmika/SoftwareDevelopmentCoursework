@@ -10,17 +10,17 @@ const Navigator = () => {
         <div className="navigator">
           <ul className="list">
             <li>
-              <NavLink to={"/Store"} className={"NavLink"}>
+              <NavLink to={"/store"} className={"NavLink"}>
                 <BasicButton text={"Store"} svg={"svg/store.svg"} />
               </NavLink>
             </li>
             <li>
-            <NavLink to={"/"} className={"NavLink"}>
+            <NavLink to={"/home"} className={"NavLink"}>
               <BasicButton text={"Home"} svg={"svg/home.svg"} />
             </NavLink>
             </li>
             <li>
-              <NavLink to={"/Community"} className={"NavLink"}>
+              <NavLink to={"/community"} className={"NavLink"}>
                 <BasicButton text={"Community"} svg={"svg/community.svg"} />
               </NavLink>
             </li>

@@ -1,3 +1,9 @@
+.store-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
 .navigator-container {
     margin: 0px;
 }
@@ -34,9 +40,9 @@
     height: 100%;
 }
 
+
 .game-card-set-container::-webkit-scrollbar {
     width: 10px;
-    margin-right: 10px;
 }
 
 .game-card-set-container::-webkit-scrollbar-thumb {
@@ -47,6 +53,12 @@
     background-color: transparent;
 }
 
-collections {
+.collections {
     width: 100%;
+}
+
+.new-game-publish {
+    display: flex;
+    flex-direction: row;
+    margin-left: 80%; 
 }
