@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import BasicButton from "../basicButton/basicButton";
-import styles from "./styles.css"
+import styles from "./style.css"
 
-// onSend is a function that will send the rule to database. It will be triggered when the send button is clicked
-const RuleSender = ({onSend}) => {
+// onSend is a function that will send the Review to database. It will be triggered when the send button is clicked
+const ReviewSender = ({onSend}) => {
   const [inputText, setInputText] = useState('');
 
   const handleInputChange = (event) => {
@@ -31,4 +31,4 @@ const RuleSender = ({onSend}) => {
   );
 }
 
-export default RuleSender;
+export default ReviewSender;

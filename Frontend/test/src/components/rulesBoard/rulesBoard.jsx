@@ -1,31 +1,47 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./styles.css"
-
-const rules = ["No cheating, hacking, or using exploits in any form.",
-  "Respect other players and refrain from any kind of harassment, hate speech, or discriminatory behavior.",
-  "No intentionally causing lag or disruption to the game."]
 
 // rules is a list containing all rules should be displayed.
 const RulesComponent = ({title, rules}) => {
 
+  // rules is a string
   return (
     <div className="rules-container">
-      <div className="title">Official Rules</div>
-      <div className="list-container">
-        <ul className="list">
-          {rules.map((rule, index) => (
-            <li key={index} className="rule">{`${index + 1}. ` + rule}</li>
-          ))}
-        </ul>
+      <div className="title">{title}</div>
+      <div className="rule-container">
+        {rules}
       </div>
     </div>
   );
 };
 
-const RulesBoard = () => {
+const RulesBoard = ({newData, officialRules, userRules}) => {
+  const [myUserRules, setMyUserRules] = React.useState([]);
+
+  useEffect(() => {
+    if (newData.length > 0) {
+      setMyUserRules([newData, ...myUserRules]);
+    }
+  }, [newData])
+
+  useEffect(() => {
+    setMyUserRules(userRules);
+  }, [userRules]);
+
   return(
-    <div>
-      <RulesComponent title="Official Rules" rules={rules} />
+    <div className="rules-board-container">
+      <RulesComponent title="Official Rules" rules={officialRules} />
+      <div className="rule-component-container">
+        <ul className="user-rules-list">
+          {myUserRules.map((rules, index) => (
+            <li key={index} className="rule-component-list">
+              <RulesComponent title={`Alternative Rules ${myUserRules.length-index}`} rules={rules}/>
+            </li>
+          )) }
+        </ul>
+      </div>
     </div>
   )
 }
+
+export default RulesBoard;

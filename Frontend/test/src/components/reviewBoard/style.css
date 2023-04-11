@@ -2,7 +2,25 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    width: auto;
+    width: 30vw;
+    white-space: pre-line;
+    color: #FFFFFF;
+}
+
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    white-space: pre-line;
+    color: #FFFFFF;
+}
+
+.rule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
     white-space: pre-line;
     color: #FFFFFF;
 }
@@ -16,7 +34,7 @@
 
 .rules-board-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: flex-start;
     width: 100%;
     padding: 0px;
@@ -24,7 +42,9 @@
 }
 
 .rule-component-container {
-    width: auto;
+    display: flex;
+    justify-content: left;
+    width: 100%;
     height: 40vh;
     overflow-y: auto;
 }
@@ -41,3 +61,7 @@
 .rule-component-container::-webkit-scrollbar-track {
     background-color: transparent;
 }
+
+.rule-component-list { width: 100%}
+
+.user-rules-list {width: 100%}

@@ -4,6 +4,8 @@ import styles from "./style.css"
 import SearchBar from "../../components/searchBar/searchBar";
 import TypeFilter from "../../components/typeFilter/typeFilter";
 import Navigator from "../../components/Navigator/navigator";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Rules from "../../components/Rule/rule";
 
 const Home = () => {
   const spider_man =  {
@@ -30,18 +32,25 @@ const Home = () => {
       <div className={"navigator-container"}>
         <Navigator />
       </div>
-      <div className={"collections"}>
-        <div className="title-container">
-          <div className="title">Collection</div>
-          <div className={"data-filter-container"}>
-            <SearchBar placeHolder="Enter the Name" searchTextChange={searchTextChange}/>
-            <TypeFilter typeChange={typeSelectionChange}/>
+      <Routes>
+        <Route path="/" element={
+          <div className={"collections"}>
+            <div className="title-container">
+              <div className="title">Collection</div>
+              <div className={"data-filter-container"}>
+                <SearchBar placeHolder="Enter the Name" searchTextChange={searchTextChange}/>
+                <TypeFilter typeChange={typeSelectionChange}/>
+              </div>
+            </div>
+            <div className={"game-card-set-container"}>
+              <GameCardSet data={games} />
+            </div>
           </div>
-        </div>
-        <div className={"game-card-set-container"}>
-          <GameCardSet data={games} />
-        </div>
-      </div>
+        }></Route>
+        <Route path="spiderMan" element={
+          <Rules />
+        }></Route>
+      </Routes>
     </div>
   )
 }

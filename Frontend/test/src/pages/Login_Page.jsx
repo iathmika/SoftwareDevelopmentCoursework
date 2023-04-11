@@ -56,7 +56,6 @@ const LoginPage = () => {
               <Button> Create Account </Button>
             </Grid>
           </Grid>
-
       </div>
     );
   }
