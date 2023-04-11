@@ -10,7 +10,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Review from "../Review/Review";
 import Rules from "../Rule/rule";
-import styles from "./style.css"
 
 const GameDetails = props => {
 

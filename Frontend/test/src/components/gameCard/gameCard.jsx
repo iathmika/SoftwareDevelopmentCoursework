@@ -16,11 +16,9 @@ const GameCard = ({gameName, rating, backgroundImage, onButtonClick}) => {
             <h4 className="game-name">{gameName}</h4>
             <p className="game-rating">Rating: {rating}</p>
         </div>
-        <div className={"new-game-publish"}>
-            <Button variant="contained" onClick={() => setOpenGame(true)}>Open</Button>
-          </div>
         <div className="game-delete">
-            <BasicButton onClick={onButtonClick} text="Delete" svg="svg/delete.svg"/>
+          <Button variant="contained" onClick={() => setOpenGame(true)}>Open</Button>
+          <BasicButton onClick={onButtonClick} text="Delete" svg="svg/delete.svg"/>
         </div>
         {openGame &&
             (<GameDetails
