@@ -16,16 +16,18 @@ def login(request):
             messages.success(request, 'You are now logged in')
             return redirect('profile')
         else:
-            return HttpResponse('Login failed')
+            #return HttpResponse('Login failed')
+            messages.ERROR(request, 'Login Failed. Incorrect userid or password')
             return redirect('login')
     else:
         return render(request, 'login.html')
 
 def profile(request):
-    user_id = request.session.get('id')
-    user = User.getInstance()
-    user_profile = user.get_user_profile(user_id)
-    return render(request, 'profile.html', {'user_profile': user_profile})
+    if request.method == "GET":
+        user_id = request.session.get('id')
+        user = User.getInstance()
+        user_profile = user.get_user_profile(user_id)
+        return render(request, 'profile.html', {'user_profile': user_profile})
 
 def logout(request):
     request.session.flush()
@@ -56,7 +58,8 @@ def register(request):
         if request.body:
             print("request body: ",request.body)
             #userdata = json.loads(request.body)
-            userdata = {"id": int(user_id), "username": username, "password": password, "email": email}
+            games_list = []
+            userdata = {"id": int(user_id), "username": username, "password": password, "email": email, "games": games_list}
             user.create_user(userdata)
 
         # Login the new user and redirect to the profile page
@@ -69,3 +72,12 @@ def register(request):
             return redirect('profile')
 
     return render(request, 'register.html')
+
+def delete_account(request):
+    user = User.getInstance()
+    #if request.method == 'DELETE':
+    user_id = request.GET.get('id')
+    user.delete_by_id(user_id)
+    print("User account with user id ", user_id, " deleted successfully.")
+    request.session.flush()
+    return redirect('login')

@@ -42,7 +42,7 @@ class User:
 if __name__ == "__main__":
 
     user = User.getInstance()
-    new_user = {"id": 102, "username": "athmika", "password": "secret"}
+    new_user = {"id": 102, "username": "athmika", "password": "secret", "games": [101, 103]}
     user.create_user(new_user)
     print(user.get_user_profile(102))
 
