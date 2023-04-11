@@ -2,11 +2,10 @@ import React from 'react';
 import styles from "./GameCard.css"
 import BasicButton from "../basicButton/basicButton";
 import {NavLink} from "react-router-dom";
+import AddGameDialog from "../newGameDialog";
 
 const GameCard = ({gameName, rating, backgroundImage, onButtonClick}) => {
-
   return (
-    <NavLink to={"/home/spiderMan"} className={"gameCard-NavLink"}>
       <div className="game-card">
         <div className="game-card-content" style={{ backgroundImage: `url(${backgroundImage})`}}>
             <div className="game-info">
@@ -18,7 +17,6 @@ const GameCard = ({gameName, rating, backgroundImage, onButtonClick}) => {
             </div>
         </div>
       </div>
-    </NavLink>
   );
 };
 

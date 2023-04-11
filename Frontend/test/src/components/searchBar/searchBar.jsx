@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import styles from "./styles.css"
 
@@ -17,19 +17,16 @@ const SearchBar = ({placeHolder, searchTextChange}) => {
 
   const handleKeyDown = async (event) => {
     if (event.key === 'Enter') {
-      await fetchData(userInput);
+      searchTextChange(userInput);
     }
   };
 
-  const fetchData = async (query) => {
-    try {
-      const response = await axios.get(`https://your-api-url.com/search?query=${query}`);
-      const data = response.data;
-      searchTextChange(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+  useEffect(() => {
+    // if the user input is empty, use searchTextChange to inform the parent component that the search text is empty.
+    if (userInput === '') {
+      searchTextChange('');
     }
-  };
+  }, [userInput])
 
   return (
     <input
