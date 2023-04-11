@@ -22,7 +22,7 @@ const RuleSender = ({onSend}) => {
         value={inputText}
         onChange={handleInputChange}
         className="text-input"
-        placeholder="Type your text here..."
+        // placeholder="Type your text here..."
       ></textarea>
       <div className={"send-button"}>
         <BasicButton handleButtonClick={handleButtonClick} svg="/svg/send.svg"/>

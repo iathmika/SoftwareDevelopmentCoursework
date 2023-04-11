@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import ReviewSender from "../reviewSender/reviewSender";
 import ReviewBoard from "../reviewBoard/ReviewBoard";
 import style from "./style.css";
+import Rating from '@mui/material/Rating';
 
 const myOfficialRules = "1. No cheating, hacking, or using exploits in any form.\n2. Respect other players and refrain from any kind of harassment, hate speech, or discriminatory behavior.\n3. No intentionally causing lag or disruption to the game."
 const unofficialRules_1 = "1. No cheating, hacking, or using exploits in any form.\n2. Respect other players and refrain from any kind of harassment, hate speech, or discriminatory behavior.\n3. No intentionally causing lag or disruption to the game."
@@ -15,7 +16,17 @@ const GameInfo = ({name, rating }) => {
   return (
     <div className="game-info">
       <div className="game-name">{name}</div>
-      <div className="game-rating">{rating}</div>
+      <Rating
+        sx={{
+          "& .MuiRating-iconEmpty": {
+            color: "white"
+          }
+        }}
+        name="read-only"
+        value={rating}
+        readOnly
+        precision={0.1}
+      />
     </div>
   )
 }
@@ -33,8 +44,9 @@ const Review = () => {
     setGameName(myGameName);
     setGameRating(myGameRating);
   },[gameName])
-  const handleNewRule = (newValue) => {
-    setNewReview(newValue);
+  const handleNewReview = (review, rating) => {
+    setNewReview(review);
+    setGameRating(rating)
     // Actually, we should send data to backend.
     console.log("send data to backend");
   }
@@ -47,7 +59,7 @@ const Review = () => {
           Game Reviews
         </div>
         <div style={{width: "100%", display: "flex", flexDirection: "column"}}>
-          <ReviewSender onSend={handleNewRule}/>
+          <ReviewSender onSend={handleNewReview}/>
           <ReviewBoard newData={newReview} userReview={userReview}/>
         </div>
       </div>
