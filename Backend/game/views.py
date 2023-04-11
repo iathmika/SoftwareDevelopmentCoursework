@@ -30,6 +30,17 @@ def game(request):
         game_id = request.GET.get('id')
         game_found = game_model.get_by_id(game_id)
         if game_found:
+            review_list = []
+            for _idx in game_found['review']:
+                review_list.append(Review.getInstance().get_by_id(ObjectId(_idx)))
+            rating = 0
+            if len(review_list) is not 0:
+                rating_sum = 0.0
+                for review in review_list:
+                    rating_sum += float(review.get('rating'))
+
+                rating = rating_sum / len(review_list)
+            game_found['rating'] = rating
             return JsonResponse(game_found)
         else:
             return JsonResponse({'message': 'Game not found'}, status=404)
@@ -90,14 +101,6 @@ def game_info(request):
         for _idx in _found['review']:
             review_list.append(Review.getInstance().get_by_id(ObjectId(_idx)))
 
-        rating = 0
-        if len(review_list) is not 0:
-            rating_sum = 0.0
-            for review in review_list:
-                rating_sum += float(review.get('rating'))
-
-            rating = rating_sum / len(review_list)
-
         # get rule
         rule_list = []
         for _idx in _found['rule']:
@@ -114,7 +117,6 @@ def game_info(request):
             seller_list.append(Seller.getInstance().get_by_id(ObjectId(_idx)))
 
         return JsonResponse({
-            'rating': rating,
             'reviews': review_list,
             'sellers': seller_list,
             'tags': tag_list,
