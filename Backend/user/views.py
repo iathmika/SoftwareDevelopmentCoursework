@@ -58,16 +58,15 @@ def account(request):
             return JsonResponse({'message': 'User id is already taken'}, safe=False, status=403)
 
         # Create the new user
-        if request.body:
-            games_list = []
-            tag_list = []
-            userdata = {"id": int(user_id),
-                        "username": username,
-                        "password": password,
-                        "email": email,
-                        "games": games_list,
-                        "tags": tag_list}
-            user.create_user(userdata)
+        games_list = []
+        tag_list = []
+        userdata = {"id": int(user_id),
+                    "username": username,
+                    "password": password,
+                    "email": email,
+                    "games": games_list,
+                    "tags": tag_list}
+        user.create_user(userdata)
 
         return JsonResponse({'message': 'account create success'}, safe=False, status=200)
 
