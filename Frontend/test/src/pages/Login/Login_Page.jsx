@@ -49,6 +49,11 @@ const LoginPage = () => {
               InputLabelProps={{
                 style: { color: '#989898' },
               }}
+              sx={{
+                '& input': {
+                  color: 'white'
+                },
+              }}
             />
             <TextField
               onChange={(e) => setPassword(e.target.value)}
@@ -57,6 +62,11 @@ const LoginPage = () => {
               type="password"
               InputLabelProps={{
                 style: { color: '#989898' },
+              }}
+              sx={{
+                '& input': {
+                  color: 'white'
+                },
               }}
             />
             <div className={"button-set"}>
@@ -95,9 +105,9 @@ const LoginPage = () => {
                 style: { color: '#989898' },
               }}
               sx={{
-                "& input": {
-                  color: 'white',
-                }
+                '& input': {
+                  color: 'white'
+                },
               }}
             />
             <TextField
@@ -109,9 +119,9 @@ const LoginPage = () => {
                 style: { color: '#989898' },
               }}
               sx={{
-                "& input": {
-                  color: 'white',
-                }
+                '& input': {
+                  color: 'white'
+                },
               }}
             />
             <TextField
@@ -123,9 +133,9 @@ const LoginPage = () => {
                 style: { color: '#989898' },
               }}
               sx={{
-                input: {
-                  color: 'white',
-                }
+                '& input': {
+                  color: 'white'
+                },
               }}
             />
             <TextField
@@ -137,9 +147,9 @@ const LoginPage = () => {
                 style: { color: '#989898' },
               }}
               sx={{
-                "& input": {
-                  color: 'white',
-                }
+                '& input': {
+                  color: 'white'
+                },
               }}
             />
           <div>
