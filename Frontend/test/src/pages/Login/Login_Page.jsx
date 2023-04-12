@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import Button from "@mui/material/Button";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import {makeStyles} from "@mui/material";
 
 
 const LoginPage = () => {
@@ -42,16 +43,32 @@ const LoginPage = () => {
       <div className="login-container" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px"}}>
           <div className={"sign-in"}>Login</div>
           <form className={"sign-in-form"}>
-            <TextField
+              <TextField
               onChange={(e) => setUsername(e.target.value)}
               value={username}
               label={"Username"} //optional
+              InputLabelProps={{
+                style: { color: '#989898' },
+              }}
+              sx={{
+                '& input': {
+                  color: 'white'
+                },
+              }}
             />
             <TextField
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               label={"Password"} //optional
               type="password"
+              InputLabelProps={{
+                style: { color: '#989898' },
+              }}
+              sx={{
+                '& input': {
+                  color: 'white'
+                },
+              }}
             />
             <div className={"button-set"}>
               <Button variant="outlined" 
@@ -84,25 +101,57 @@ const LoginPage = () => {
             <TextField
               onChange={(e) => setUsername(e.target.value)}
               value={username}
-              label={"Name"} 
+              label={"Name"}
+              InputLabelProps={{
+                style: { color: '#989898' },
+              }}
+              sx={{
+                '& input': {
+                  color: 'white'
+                },
+              }}
             />
             <TextField
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               type="email"
-              label={"Email"} 
+              label={"Email"}
+              InputLabelProps={{
+                style: { color: '#989898' },
+              }}
+              sx={{
+                '& input': {
+                  color: 'white'
+                },
+              }}
             />
             <TextField
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               label={"Password"}
               type="password"
+              InputLabelProps={{
+                style: { color: '#989898' },
+              }}
+              sx={{
+                '& input': {
+                  color: 'white'
+                },
+              }}
             />
             <TextField
               onChange={(e) => setConfirmPassword(e.target.value)}
               value={confirmPassword}
               label={"Confirm Password"} 
               type="password"
+              InputLabelProps={{
+                style: { color: '#989898' },
+              }}
+              sx={{
+                '& input': {
+                  color: 'white'
+                },
+              }}
             />
           <div>
           <Button variant="outlined" onClick={() => {
