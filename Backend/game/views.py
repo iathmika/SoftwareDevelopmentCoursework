@@ -8,6 +8,7 @@ from review.models import Review
 from rule.models import Rule
 from seller.models import Seller
 from tag.models import Tag
+from user.models import User
 from .models import Game
 
 
@@ -87,6 +88,7 @@ def game_all(request):
         else:
             return JsonResponse({'message': 'No Game Exists'}, status=404)
 
+
 @csrf_exempt
 def game_info(request):
     _model = Game.getInstance()
@@ -124,6 +126,7 @@ def game_info(request):
             'rules': rule_list,
         }, safe=False, status=200)
 
+
 @csrf_exempt
 def search_by_name(request):
     if request.method == 'GET':
@@ -132,3 +135,32 @@ def search_by_name(request):
         results = game_model.get_by_name_regex(_name)
 
         return JsonResponse(results, safe=False)
+
+
+def search_by_name_in_collection(request):
+    if request.method == 'GET':
+        _name = request.GET.get('name')
+        game_list = []
+        if _name == '':
+            return JsonResponse(game_list, safe=False, status=200)
+
+        user_model = User.getInstance()
+        user_id = request.session.get('id')
+        if not user_id:
+            return JsonResponse({'message': 'please login first'}, safe=False, status=404)
+
+        user_found = user_model.get_user_profile(user_id)
+        if not user_found:
+            return JsonResponse({'message': 'User not found'}, status=404)
+
+        game_model = Game.getInstance()
+        for _idx in user_found['games']:
+            game_list.append(game_model.get_by_id(ObjectId(_idx)))
+        regex = re.compile(_name, re.IGNORECASE)
+
+        result = []
+        for game_i in game_list:
+            if re.match(regex, game_i.get('name')):
+                result.append(game_i)
+
+        return JsonResponse(result, safe=False)
