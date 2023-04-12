@@ -21,6 +21,11 @@ def login(request):
 
         user = User.getInstance()
         if user.authenticate_user(request, user_id, password):
+            print("login success ! ")
+            request.session['id'] = user_id
+
+            #print("session id: ",user_id)
+            print("session_id",request.session.get('id'))
             return JsonResponse({'message': 'login success!'}, safe=False, status=200)
         else:
             return JsonResponse({'message': 'Invalid username or password!'}, safe=False, status=404)
@@ -104,8 +109,10 @@ def logout(request):
 
 def get_user_collection(request):
     if request.method == 'GET':
-        _model = User.getInstance()
+        
         user_id = request.session.get('id')
+        _model = User.getInstance()
+        print("user_id",user_id)
         if not user_id:
             return JsonResponse({'message': 'please login first'}, safe=False, status=401)
 
@@ -129,6 +136,7 @@ def get_tags(request):
     if request.method == 'GET':
         _model = User.getInstance()
         user_id = request.session.get('id')
+        print("session id: ",user_id)
         if not user_id:
             return JsonResponse({'message': 'please login first'}, safe=False, status=401)
 

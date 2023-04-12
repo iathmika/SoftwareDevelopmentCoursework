@@ -26,13 +26,35 @@ const Home = () => {
   const typeSelectionChange = (value) => {
     setTypeSelection(value);
   }
-
+/*
   useEffect(() => {
     // The options should be fetched from the backend based on search text and type selection.
+  
     console.log("fetch game data from backend");
     setGames(myGames);
   }, [searchText, typeSelection])
-
+*/
+/*
+useEffect(() => {
+  console.log("fetching games...");
+  fetch("http://localhost:8000/user/game")
+  .then(response => response.json())
+  .then(data => console.log(data))
+},[])
+*/
+useEffect(() => {
+  console.log("fetching games...");
+fetch('http://localhost:8000/user/game', {
+  method: 'GET',
+  credentials: 'include',
+  headers: {
+    'Content-Type': 'application/json',
+     // include the session ID in the Authorization header
+  },
+  
+}).then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error(error))},[])
   return(
     <div className={"home"}>
       <div className={"navigator-container"}>

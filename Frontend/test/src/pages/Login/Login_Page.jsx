@@ -28,6 +28,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if(loggedIn && loggedIn.message == "login success!"){
+      //console.log("routing to home");
       window.location.href = "/home";
     }
   },[loggedIn])
