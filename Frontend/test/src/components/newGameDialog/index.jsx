@@ -10,12 +10,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 const AddGameDialog = props => {
-    const [tag, setTag] = React.useState('');
+  const [tag, setTag] = React.useState('');
 
   const handleChange = (event) => {
     setTag(event.target.value);
   };
-    console.log(props)
+  console.log(props)
 
   if(props.addNewGame == true){
     return (
