@@ -5,7 +5,7 @@ import Store from "../pages/Store/store"
 import Community from "../pages/Community/community";
 import styles from "./style.css"
 import LoginPage from "../pages/Login/Login_Page";
-import Rules from "../components/rule/rule";
+import Rules from "../components/rule/rules";
 import Review from "../components/review/review";
 
 

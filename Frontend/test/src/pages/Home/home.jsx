@@ -5,7 +5,7 @@ import SearchBar from "../../components/searchBar/searchBar";
 import TypeFilter from "../../components/typeFilter/typeFilter";
 import Navigator from "../../components/navigator/navigator";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Rules from "../../components/rule/rule";
+import Rules from "../../components/rule/rules";
 
 const spider_man =  {
   _id: 1,
