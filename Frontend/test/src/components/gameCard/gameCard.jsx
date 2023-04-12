@@ -6,23 +6,23 @@ import styles from "./GameCard.css"
 import {NavLink} from "react-router-dom";
 import AddGameDialog from "../newGameDialog";
 
-const GameCard = ({gameName, rating, backgroundImage, onButtonClick}) => {
+const GameCard = ({ game }) => {
     const [openGame, setOpenGame] = useState(false);
 
   return (
     <div className="game-card">
-    <div className="game-card-content" style={{ backgroundImage: `url(${backgroundImage})`}}>
+    <div className="game-card-content" style={{ backgroundImage: `url(${game.image})`}}>
         <div className="game-info">
-            <h4 className="game-name">{gameName}</h4>
-            <p className="game-rating">Rating: {rating}</p>
+            <h4 className="game-name">{game.name}</h4>
+            <p className="game-rating">Rating: {game.rating}</p>
         </div>
         <div className="game-delete">
           <Button variant="contained" onClick={() => setOpenGame(true)}>Open</Button>
-          <BasicButton onClick={onButtonClick} text="Delete" svg="svg/delete.svg"/>
+          <BasicButton onClick={() => "add"} text="Add" svg="svg/add.svg"/>
         </div>
         {openGame &&
             (<GameDetails
-              gameName={gameName}
+              game={game}
               handleClose = {() => {
                 setOpenGame(false);
               }}
