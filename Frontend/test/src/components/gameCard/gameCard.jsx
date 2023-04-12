@@ -18,7 +18,7 @@ const GameCard = ({gameName, rating, backgroundImage, onButtonClick}) => {
         </div>
         <div className="game-delete">
           <Button variant="contained" onClick={() => setOpenGame(true)}>Open</Button>
-          <BasicButton onClick={onButtonClick} text="Delete" svg="svg/delete.svg"/>
+          <BasicButton onClick={onButtonClick} text="Add" svg="svg/add.svg"/>
         </div>
         {openGame &&
             (<GameDetails

@@ -13,6 +13,7 @@ const LoginPage = () => {
   const [loggingIn, setLoggingIn] = React.useState(false);
   const [createAccount, setCreateAccount] = React.useState(null);
   const [username, setUsername] = React.useState("");
+  const [userid, setUserid] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -43,9 +44,9 @@ const LoginPage = () => {
           <div className={"sign-in"}>Login</div>
           <form className={"sign-in-form"}>
               <TextField
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              label={"Username"} //optional
+              onChange={(e) => setUserid(e.target.value)}
+              value={userid}
+              label={"User ID"} //optional
               InputLabelProps={{
                 style: { color: '#989898' },
               }}
@@ -71,7 +72,7 @@ const LoginPage = () => {
             />
             <div className={"button-set"}>
               <Button variant="outlined" 
-                  onClick={() => fetch(`http://localhost:8000/user/login?id=` + username + 
+                  onClick={() => fetch(`http://localhost:8000/user/login?id=` + userid +
                     '&password=' + password)
                     .then(res => res.json())
                     .then(
@@ -110,6 +111,19 @@ const LoginPage = () => {
                 },
               }}
             />
+          <TextField
+            onChange={(e) => setUsername(e.target.value)}
+            value={userid}
+            label={"ID"}
+            InputLabelProps={{
+              style: { color: '#989898' },
+            }}
+            sx={{
+              '& input': {
+                color: 'white'
+              },
+            }}
+          />
             <TextField
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -155,7 +169,7 @@ const LoginPage = () => {
           <div>
           <Button variant="outlined" onClick={() => {
             const formData = new FormData();
-            formData.append('user_id', '1');
+            formData.append('user_id', userid);
             formData.append('username', username);
             formData.append('password', password);
             formData.append('email', email);
