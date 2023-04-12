@@ -13,19 +13,13 @@ const myGameRating = "4.5";
 
 const Rules = ({ game }) => {
   const [newRule, setNewRule] = useState("");
-  const [officialRules, setOfficialRules] = useState("");
-  const [userRules, setUserRules] = useState([]);
+  const [officialRules, setOfficialRules] = useState(myOfficialRules);
+  const [userRules, setUserRules] = useState(myUserRules);
 
-  useEffect(() => {
-    // Actually, we should fetch data from backend.
-    console.log("fetch data from backend");
-    setOfficialRules(myOfficialRules);
-    setUserRules(myUserRules);
-  })
+  //TO DO add review and rating to the backend
+
   const handleNewRule = (newValue) => {
     setNewRule(newValue);
-    // Actually, we should send data to backend.
-    console.log("send data to backend");
   }
 
   return(

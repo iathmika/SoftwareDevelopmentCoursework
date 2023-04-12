@@ -9,6 +9,8 @@ import AddGameDialog from "../newGameDialog/newGameDialog";
 const GameCard = ({ game }) => {
     const [openGame, setOpenGame] = useState(false);
 
+  //TO DO make Adding to collection work
+
   return (
     <div className="game-card">
     <div className="game-card-content" style={{ backgroundImage: `url(${game.image})`}}>

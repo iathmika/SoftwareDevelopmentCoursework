@@ -1,10 +1,8 @@
 import React, {useEffect} from "react";
 import styles from "./styles.css"
 
-// rules is a list containing all rules should be displayed.
 const RulesComponent = ({title, rules}) => {
 
-  // rules is a string
   return (
     <div className="rules-container">
       <div className="title">{title}</div>

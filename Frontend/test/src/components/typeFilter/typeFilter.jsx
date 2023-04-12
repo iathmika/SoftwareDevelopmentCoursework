@@ -10,9 +10,8 @@ const TypeFilter = ({typeChange}) => {
     typeChange(event.target.value);
   }
 
-  // Initial Options
   useEffect(() => {
-    // The options should be fetched from the backend
+    // TO DO The options should be fetched from the backend
     setOptions(["Option 1", "Option 2", "Option 3", "Option 4"]);
   }, [])
 

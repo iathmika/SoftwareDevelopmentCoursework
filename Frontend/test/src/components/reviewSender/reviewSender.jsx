@@ -3,7 +3,6 @@ import BasicButton from "../basicButton/basicButton";
 import styles from "./style.css"
 import Rating from '@mui/material/Rating';
 
-// onSend is a function that will send the Review to database. It will be triggered when the send button is clicked
 const ReviewSender = ({onSend}) => {
   const [inputText, setInputText] = useState('');
   const [rating, setRating] = useState(2);
@@ -36,7 +35,6 @@ const ReviewSender = ({onSend}) => {
         value={inputText}
         onChange={handleInputChange}
         className="text-input"
-        // placeholder="Type your text here..."
       ></textarea>
       <div className={"send-button"}>
         <BasicButton handleButtonClick={handleButtonClick} svg="/svg/send.svg"/>
