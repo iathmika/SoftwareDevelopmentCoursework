@@ -23,11 +23,11 @@ const GameDetails = props => {
           },
         }}
         maxWidth="lg"
-        open={props.openGame}
+        open={props.game.name}
         onClose={props.handleClose}>
         <DialogContent>
-          <Review/>
-          <Rules/>
+          <Review game={props.game}/>
+          <Rules game={props.game}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose}>Close</Button>

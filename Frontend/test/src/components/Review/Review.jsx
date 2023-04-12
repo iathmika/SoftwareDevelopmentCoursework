@@ -11,10 +11,10 @@ const myReview = [unofficialRules_1, unofficialRules_2, unofficialRules_3];
 const myGameName = "Among Us";
 const myGameRating = "4.5";
 
-const GameInfo = ({name, rating }) => {
+const GameInfo = ({ game }) => {
   return (
     <div className="game-info">
-      <div className="game-name">{name}</div>
+      <div className="game-name">{game.name}</div>
       <Rating
         sx={{
           "& .MuiRating-iconEmpty": {
@@ -22,7 +22,7 @@ const GameInfo = ({name, rating }) => {
           }
         }}
         name="read-only"
-        value={rating}
+        value={game.rating}
         readOnly
         precision={0.1}
       />
@@ -30,36 +30,34 @@ const GameInfo = ({name, rating }) => {
   )
 }
 
-const Review = () => {
-  const [newReview, setNewReview] = useState("");
+const Review = ({ game }) => {
+  const [reviews, setReviews] = useState("");
   const [userReview, setUserReview] = useState([]);
-  const [gameName, setGameName] = useState("");
-  const [gameRating, setGameRating] = useState("");
+  const [userRating, setUserRating] = useState("");
 
-  useEffect(() => {
-    // Actually, we should fetch data from backend.
-    console.log("fetch data from backend");
-    setUserReview(myReview);
-    setGameName(myGameName);
-    setGameRating(myGameRating);
-  },[gameName])
+  // useEffect(() => {
+  //   // Actually, we should fetch data from backend.
+  //   console.log("fetch data from backend");
+  //   setUserReview(myReview);
+  //   setGameRating(myGameRating);
+  // },[gameName])
   const handleNewReview = (review, rating) => {
-    setNewReview(review);
-    setGameRating(rating)
+    setUserReview(review);
+    setUserRating(rating)
     // Actually, we should send data to backend.
     console.log("send data to backend");
   }
 
   return(
     <div className="container-1">
-      <GameInfo name={gameName} rating={gameRating}/>
+      <GameInfo name={game.name} rating={game.rating}/>
       <div className="container-2">
         <div style={{color: "white", fontSize: "32px"}}>
           Game Reviews
         </div>
         <div style={{width: "100%", display: "flex", flexDirection: "column"}}>
           <ReviewSender onSend={handleNewReview}/>
-          <ReviewBoard newData={newReview} userReview={userReview}/>
+          <ReviewBoard newData={userReview} userReview={reviews}/>
         </div>
       </div>
     </div>

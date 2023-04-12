@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./style.css"
 import GameCard from "../gameCard/gameCard";
 
-const GameCardSet = ({data}) => {
+const GameCardSet = ({ games }) => {
   return (
     <div className="game-card-set">
-      {data.map((item, index) => (
-        <GameCard gameName={item.name} backgroundImage={item.backgroundImage} rating={item.rating} key={index} />
+      {games.map((game, index) => (
+        <GameCard game={game} />
       ))}
     </div>
   );
