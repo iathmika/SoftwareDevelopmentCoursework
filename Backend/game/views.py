@@ -134,7 +134,15 @@ def search_by_name(request):
         _name = request.GET.get('name')
         results = game_model.get_by_name_regex(_name)
 
-        return JsonResponse(results, safe=False)
+        tag_id = request.GET.get('tag_id')
+        if tag_id:
+            result = []
+            for game_i in results:
+                if tag_id in game_i.get('tag'):
+                    result.append(game_i)
+            return JsonResponse(result, safe=False)
+        else:
+            return JsonResponse(results, safe=False)
 
 
 def search_by_name_in_collection(request):
@@ -159,8 +167,14 @@ def search_by_name_in_collection(request):
         regex = re.compile(_name, re.IGNORECASE)
 
         result = []
-        for game_i in game_list:
-            if re.match(regex, game_i.get('name')):
-                result.append(game_i)
+        tag_id = request.GET.get('tag_id')
+        if tag_id:
+            for game_i in game_list:
+                if re.match(regex, game_i.get('name')) and tag_id in game_i.get('tag'):
+                    result.append(game_i)
+        else:
+            for game_i in game_list:
+                if re.match(regex, game_i.get('name')):
+                    result.append(game_i)
 
         return JsonResponse(result, safe=False)
