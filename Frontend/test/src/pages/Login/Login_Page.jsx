@@ -73,8 +73,18 @@ const LoginPage = () => {
             />
             <div className={"button-set"}>
               <Button variant="outlined" 
-                  onClick={() => fetch(`http://localhost:8000/user/login?id=` + userid +
-                    '&password=' + password)
+                  onClick={() => 
+                    //fetch(`http://localhost:8000/user/login?id=` + username + 
+                  //  '&password=' + password)
+                    fetch('http://localhost:8000/user/login?id=' + username + '&password=' + password,
+                     {
+                    method: 'GET',
+                      credentials: 'include',
+                      headers: {
+                        'Content-Type': 'application/json',
+                  
+  }
+})
                     .then(res => res.json())
                     .then(
                       (result) => {
