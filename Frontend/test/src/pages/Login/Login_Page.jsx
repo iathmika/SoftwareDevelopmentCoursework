@@ -76,7 +76,7 @@ const LoginPage = () => {
                   onClick={() => 
                     //fetch(`http://localhost:8000/user/login?id=` + username + 
                   //  '&password=' + password)
-                    fetch('http://localhost:8000/user/login?id=' + username + '&password=' + password,
+                    fetch('http://localhost:8000/user/login?id=' + userid + '&password=' + password,
                      {
                     method: 'GET',
                       credentials: 'include',
@@ -123,7 +123,7 @@ const LoginPage = () => {
               }}
             />
           <TextField
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUserid(e.target.value)}
             value={userid}
             label={"ID"}
             InputLabelProps={{
