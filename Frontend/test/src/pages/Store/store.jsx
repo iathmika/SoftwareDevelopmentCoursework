@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import Navigator from "../../components/Navigator/navigator";
+import Navigator from "../../components/navigator/navigator";
 import styles from "./style.css";
-import GameCardSet from "../../components/gameCardSet";
+import GameCardSet from "../../components/gameCardSet/gameCardSet";
 import SearchBar from "../../components/searchBar/searchBar";
-import AddNewGame from "../../components/newGameDialog";
+import AddNewGame from "../../components/newGameDialog/newGameDialog";
 import TypeFilter from "../../components/typeFilter/typeFilter";
 import Button from "@mui/material/Button";
 

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import BasicButton from "../basicButton/basicButton";
-import GameDetails from "../gameDetails";
+import GameDetails from "../gameDetails/gameDetails";
 import Button from "@mui/material/Button";
-import styles from "./GameCard.css"
+import styles from "./style.css"
 import {NavLink} from "react-router-dom";
-import AddGameDialog from "../newGameDialog";
+import AddGameDialog from "../newGameDialog/newGameDialog";
 
 const GameCard = ({ game }) => {
     const [openGame, setOpenGame] = useState(false);

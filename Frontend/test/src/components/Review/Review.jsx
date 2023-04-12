@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ReviewSender from "../reviewSender/reviewSender";
-import ReviewBoard from "../reviewBoard/ReviewBoard";
+import ReviewBoard from "../reviewBoard/reviewBoard";
 import style from "./style.css";
 import Rating from '@mui/material/Rating';
 
@@ -31,7 +31,7 @@ const GameInfo = ({ game }) => {
 }
 
 const Review = ({ game }) => {
-  const [reviews, setReviews] = useState("");
+  const [reviews, setReviews] = useState(myReview);
   const [userReview, setUserReview] = useState([]);
   const [userRating, setUserRating] = useState("");
 
@@ -50,7 +50,7 @@ const Review = ({ game }) => {
 
   return(
     <div className="container-1">
-      <GameInfo name={game.name} rating={game.rating}/>
+      <GameInfo game={game}/>
       <div className="container-2">
         <div style={{color: "white", fontSize: "32px"}}>
           Game Reviews

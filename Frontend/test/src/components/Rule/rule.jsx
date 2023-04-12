@@ -11,29 +11,16 @@ const myUserRules = [unofficialRules_1, unofficialRules_2, unofficialRules_3];
 const myGameName = "Among Us";
 const myGameRating = "4.5";
 
-const GameInfo = ({name, rating }) => {
-  return (
-    <div className="game-info">
-      <div className="game-name">{name}</div>
-      <div className="game-rating">{rating}</div>
-    </div>
-  )
-}
-
-const Rules = () => {
+const Rules = ({ game }) => {
   const [newRule, setNewRule] = useState("");
   const [officialRules, setOfficialRules] = useState("");
   const [userRules, setUserRules] = useState([]);
-  const [gameName, setGameName] = useState("");
-  const [gameRating, setGameRating] = useState("");
 
   useEffect(() => {
     // Actually, we should fetch data from backend.
     console.log("fetch data from backend");
     setOfficialRules(myOfficialRules);
     setUserRules(myUserRules);
-    setGameName(myGameName);
-    setGameRating(myGameRating);
   })
   const handleNewRule = (newValue) => {
     setNewRule(newValue);
@@ -43,7 +30,6 @@ const Rules = () => {
 
   return(
     <div className="container-1">
-      <GameInfo name={gameName} rating={gameRating}/>
       <div className="container-2">
         <div style={{color: "white", fontSize: "32px"}}>
           House rules

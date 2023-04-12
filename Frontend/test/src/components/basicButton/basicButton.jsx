@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./basicButton.css"
+import styles from "./style.css"
 
 const BasicButton = ({ handleButtonClick, text, svg, style}) => {
 

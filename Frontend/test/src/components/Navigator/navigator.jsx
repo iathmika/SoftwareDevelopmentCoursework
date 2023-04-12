@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BasicButton from '../basicButton/basicButton';
 import {NavLink} from "react-router-dom";
-import styles from './Navigator.css'
+import styles from './style.css'
 
 const Navigator = () => {
     const [selectedButton, setSelectedButton] = useState(null);
