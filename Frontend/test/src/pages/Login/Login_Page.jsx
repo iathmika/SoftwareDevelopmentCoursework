@@ -104,22 +104,24 @@ const LoginPage = () => {
               type="password"
             />
           <div>
-            <Button variant="outlined" onClick={() => 
-              fetch('http://localhost:8000/user/account', {  
-                method: 'POST',
-                body: JSON.stringify({
-                  user_id: 1,
-                  username: username,
-                  password: password,
-                  email: email,
-                  confirm_password: confirmPassword,
-               })})
+          <Button variant="outlined" onClick={() => {
+            const formData = new FormData();
+            formData.append('user_id', '1');
+            formData.append('username', username);
+            formData.append('password', password);
+            formData.append('email', email);
+            formData.append('confirm_password', confirmPassword);
+
+            fetch('http://localhost:8000/user/account', {
+              method: 'POST',
+              body: formData
+            })
               .then(response => response.json())
               .then(result => {
                 setCreateAccount(result)
                 console.log(result)
               })
-            }>Create Account</Button>
+          }}>Create Account</Button>
           </div>
         </form>
       </div>
