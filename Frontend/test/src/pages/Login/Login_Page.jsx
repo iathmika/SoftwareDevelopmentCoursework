@@ -76,7 +76,7 @@ const LoginPage = () => {
                   onClick={() => 
                     //fetch(`http://localhost:8000/user/login?id=` + username + 
                   //  '&password=' + password)
-                    fetch('http://localhost:8000/user/login?id=' + username + '&password=' + password,
+                    fetch('http://localhost:8000/user/login?id=' + userid + '&password=' + password,
                      {
                     method: 'GET',
                       credentials: 'include',
