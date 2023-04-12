@@ -72,8 +72,7 @@ def account(request):
                     "games": games_list,
                     "tags": tag_list}
         user.create_user(userdata)
-
-    return JsonResponse({'message': 'account create success'}, safe=False, status=200)
+        return JsonResponse({'message': 'account create success'}, safe=False, status=200)
 
     if request.method == "PUT":
         user_id = request.session.get('id')
