@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Review from "../review/review";
-import Rules from "../rule/rules";
+import Rules from "../rule/rule";
 
 const GameDetails = props => {
 
